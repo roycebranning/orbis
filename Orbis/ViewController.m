@@ -10,7 +10,7 @@
 #import "WhirlyGlobeComponent.h"
 
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate>
 
 - (void) addCountries;
 - (void) addAnnotation:(NSString *)title withSubtitle:(NSString *)subtitle at: (MaplyCoordinate)coord;
@@ -164,7 +164,7 @@ const bool DoGlobe = true;
 - (void) handleSelection:(MaplyBaseViewController *)viewC
                 selected:(NSObject *)selectedObj
 {
-    //SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+    
     // NSString *subtitle = [NSString stringWithFormat: @"%@",webViewController.url];
     
     // ensure it's a MaplyVectorObject. It should be one of our outlines.
@@ -195,22 +195,24 @@ const bool DoGlobe = true;
             
             else{
                 NSDictionary* anArticle;
-                NSMutableArray* listOfArticles = [[NSMutableArray alloc] init];
-                for(int i = 0; i < sizeof(listOfArticles); i++){
+                self.listOfArticles = [[NSMutableArray alloc] init];
+                for(int i = 0; i < sizeof(self.listOfArticles); i++){
                     
                     anArticle = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
                                  [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
                                  nil];
-                    [listOfArticles addObject: anArticle];
-                    NSLog(@"%@",listOfArticles[i][@"title"]);
-                    NSLog(@"%@",listOfArticles[i][@"link"]);
+                    [self.listOfArticles addObject: anArticle];
+                    NSLog(@"%@",self.listOfArticles[i][@"title"]);
+                    NSLog(@"%@",self.listOfArticles[i][@"link"]);
                 }
             }
             [self addAnnotation:country withSubtitle:[[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"] at:location];
             if ([country isEqualToString:self.lastSelect]){
-                UITableView *articleView = [[UITableView alloc]init];
-                self.view = articleView;
+                UITableView *articleView    =   [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+                articleView.dataSource      =   self;
+                articleView.delegate        =   self;
+                [self.view addSubview:articleView];
             }
             self.lastSelect = (NSString *)theVector.userObject;
         }
@@ -231,12 +233,26 @@ const bool DoGlobe = true;
     [self handleSelection:viewC selected:selectedObj];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    NSLog(@"click");
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%@", indexPath);
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.listOfArticles count];
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tmpTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier         =   @"MainCell";
+    UITableViewCell *cell               =   [tmpTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (nil == cell) {
+        cell    =   [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.textLabel.text = [[self.listOfArticles objectAtIndex:indexPath.row]objectForKey:@"title"];
+    return cell;
+}
 @end
 
