@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WhirlyGlobeComponent.h"
+#import "SVWebViewController.h"
 
 @interface ViewController ()
 
@@ -166,15 +167,25 @@ const bool DoGlobe = true;
     NSString *subtitle = [NSString stringWithFormat:@"(%.2fN, %.2fE)",
                           coord.y*57.296,coord.x*57.296];
     [self addAnnotation:title withSubtitle:subtitle at:coord];
+    //code used for implementing webview when I can figure it out, don't erase!!!
+    /*NSString *title = [NSString stringWithFormat:@"(%.2fN, %.2fE)",
+                       coord.y*57.296,coord.x*57.296];
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+    NSString *subtitle = [NSString stringWithFormat: @"%@",webViewController.url];
+    
+    [self addAnnotation:title withSubtitle:subtitle at:coord];*/
+    
+    
 }
 
 - (void)maplyViewController:(MaplyViewController *)viewC
                    didTapAt:(MaplyCoordinate)coord
 {
-    NSString *title = @"Tap Location:";
-    NSString *subtitle = [NSString stringWithFormat:@"(%.2fN, %.2fE)",
-                          coord.y*57.296,coord.x*57.296];
-    [self addAnnotation:title withSubtitle:subtitle at:coord];
+     NSString *title = @"Tap Location:";
+     NSString *subtitle = [NSString stringWithFormat:@"(%.2fN, %.2fE)",
+     coord.y*57.296,coord.x*57.296];
+     [self addAnnotation:title withSubtitle:subtitle at:coord];
+
 }
 
 // Unified method to handle the selection

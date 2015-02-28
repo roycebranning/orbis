@@ -270,6 +270,23 @@
 		38DE5E831AA19611005D3B95 /* ZAF.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 38DE5D8A1AA19611005D3B95 /* ZAF.geojson */; };
 		38DE5E841AA19611005D3B95 /* ZMB.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 38DE5D8B1AA19611005D3B95 /* ZMB.geojson */; };
 		38DE5E851AA19611005D3B95 /* ZWE.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 38DE5D8C1AA19611005D3B95 /* ZWE.geojson */; };
+		DD761FC81AA1B2C900BD5053 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DD761F931AA1B2C700BD5053 /* .gitignore */; };
+		DD761FD11AA1B2C900BD5053 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = DD761FA51AA1B2C900BD5053 /* LICENSE.txt */; };
+		DD761FD21AA1B2C900BD5053 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = DD761FA61AA1B2C900BD5053 /* README.md */; };
+		DD761FD31AA1B2C900BD5053 /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD761FA81AA1B2C900BD5053 /* SVWebViewController.strings */; };
+		DD761FD41AA1B2C900BD5053 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD761FB21AA1B2C900BD5053 /* SVModalWebViewController.m */; };
+		DD761FD51AA1B2C900BD5053 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD761FB31AA1B2C900BD5053 /* SVWebViewController.bundle */; };
+		DD761FD61AA1B2C900BD5053 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD761FB51AA1B2C900BD5053 /* SVWebViewController.m */; };
+		DD761FD71AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD761FB81AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad.png */; };
+		DD761FD81AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD761FB91AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
+		DD761FD91AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = DD761FBB1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.m */; };
+		DD761FDA1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD761FBC1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome@2x.png */; };
+		DD761FDB1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD761FBE1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad.png */; };
+		DD761FDC1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD761FBF1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad@2x.png */; };
+		DD761FDD1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = DD761FC11AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.m */; };
+		DD761FDE1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD761FC21AA1B2C900BD5053 /* SVWebViewControllerActivitySafari@2x.png */; };
+		DD761FDF1AA1B2C900BD5053 /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DD761FC41AA1B2C900BD5053 /* SVWebViewControllerActivity.m */; };
+		DD761FE01AA1B2C900BD5053 /* SVWebViewController.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DD761FC71AA1B2C900BD5053 /* SVWebViewController.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -552,6 +569,37 @@
 		38DE5D8A1AA19611005D3B95 /* ZAF.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZAF.geojson; sourceTree = "<group>"; };
 		38DE5D8B1AA19611005D3B95 /* ZMB.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZMB.geojson; sourceTree = "<group>"; };
 		38DE5D8C1AA19611005D3B95 /* ZWE.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZWE.geojson; sourceTree = "<group>"; };
+		DD761F931AA1B2C700BD5053 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DD761FA51AA1B2C900BD5053 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		DD761FA61AA1B2C900BD5053 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DD761FA91AA1B2C900BD5053 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FAA1AA1B2C900BD5053 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FAB1AA1B2C900BD5053 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FAC1AA1B2C900BD5053 /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
+		DD761FAD1AA1B2C900BD5053 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FAE1AA1B2C900BD5053 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FAF1AA1B2C900BD5053 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FB01AA1B2C900BD5053 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
+		DD761FB11AA1B2C900BD5053 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
+		DD761FB21AA1B2C900BD5053 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
+		DD761FB31AA1B2C900BD5053 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
+		DD761FB41AA1B2C900BD5053 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		DD761FB51AA1B2C900BD5053 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
+		DD761FB81AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome-iPad.png"; sourceTree = "<group>"; };
+		DD761FB91AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome-iPad@2x.png"; sourceTree = "<group>"; };
+		DD761FBA1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivityChrome.h; sourceTree = "<group>"; };
+		DD761FBB1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivityChrome.m; sourceTree = "<group>"; };
+		DD761FBC1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivityChrome@2x.png"; sourceTree = "<group>"; };
+		DD761FBE1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari-iPad.png"; sourceTree = "<group>"; };
+		DD761FBF1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari-iPad@2x.png"; sourceTree = "<group>"; };
+		DD761FC01AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
+		DD761FC11AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
+		DD761FC21AA1B2C900BD5053 /* SVWebViewControllerActivitySafari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SVWebViewControllerActivitySafari@2x.png"; sourceTree = "<group>"; };
+		DD761FC31AA1B2C900BD5053 /* SVWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivity.h; sourceTree = "<group>"; };
+		DD761FC41AA1B2C900BD5053 /* SVWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivity.m; sourceTree = "<group>"; };
+		DD761FC51AA1B2C900BD5053 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
+		DD761FC61AA1B2C900BD5053 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
+		DD761FC71AA1B2C900BD5053 /* SVWebViewController.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SVWebViewController.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -606,6 +654,7 @@
 		38DE58751AA174E5005D3B95 /* Orbis */ = {
 			isa = PBXGroup;
 			children = (
+				DD761F921AA1B2C600BD5053 /* SVWebViewController-master */,
 				38DE587A1AA174E5005D3B95 /* AppDelegate.h */,
 				38DE587B1AA174E5005D3B95 /* AppDelegate.m */,
 				38DE58801AA174E5005D3B95 /* ViewController.h */,
@@ -901,6 +950,68 @@
 			path = country_json_50m;
 			sourceTree = "<group>";
 		};
+		DD761F921AA1B2C600BD5053 /* SVWebViewController-master */ = {
+			isa = PBXGroup;
+			children = (
+				DD761F931AA1B2C700BD5053 /* .gitignore */,
+				DD761FA51AA1B2C900BD5053 /* LICENSE.txt */,
+				DD761FA61AA1B2C900BD5053 /* README.md */,
+				DD761FA71AA1B2C900BD5053 /* SVWebViewController */,
+				DD761FC71AA1B2C900BD5053 /* SVWebViewController.podspec */,
+			);
+			name = "SVWebViewController-master";
+			path = "../../../SVWebViewController-master";
+			sourceTree = "<group>";
+		};
+		DD761FA71AA1B2C900BD5053 /* SVWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD761FA81AA1B2C900BD5053 /* SVWebViewController.strings */,
+				DD761FB11AA1B2C900BD5053 /* SVModalWebViewController.h */,
+				DD761FB21AA1B2C900BD5053 /* SVModalWebViewController.m */,
+				DD761FB31AA1B2C900BD5053 /* SVWebViewController.bundle */,
+				DD761FB41AA1B2C900BD5053 /* SVWebViewController.h */,
+				DD761FB51AA1B2C900BD5053 /* SVWebViewController.m */,
+				DD761FB61AA1B2C900BD5053 /* UIActivities */,
+			);
+			path = SVWebViewController;
+			sourceTree = "<group>";
+		};
+		DD761FB61AA1B2C900BD5053 /* UIActivities */ = {
+			isa = PBXGroup;
+			children = (
+				DD761FB71AA1B2C900BD5053 /* Chrome */,
+				DD761FBD1AA1B2C900BD5053 /* Safari */,
+				DD761FC31AA1B2C900BD5053 /* SVWebViewControllerActivity.h */,
+				DD761FC41AA1B2C900BD5053 /* SVWebViewControllerActivity.m */,
+			);
+			path = UIActivities;
+			sourceTree = "<group>";
+		};
+		DD761FB71AA1B2C900BD5053 /* Chrome */ = {
+			isa = PBXGroup;
+			children = (
+				DD761FB81AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad.png */,
+				DD761FB91AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad@2x.png */,
+				DD761FBA1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.h */,
+				DD761FBB1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.m */,
+				DD761FBC1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome@2x.png */,
+			);
+			path = Chrome;
+			sourceTree = "<group>";
+		};
+		DD761FBD1AA1B2C900BD5053 /* Safari */ = {
+			isa = PBXGroup;
+			children = (
+				DD761FBE1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad.png */,
+				DD761FBF1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad@2x.png */,
+				DD761FC01AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.h */,
+				DD761FC11AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.m */,
+				DD761FC21AA1B2C900BD5053 /* SVWebViewControllerActivitySafari@2x.png */,
+			);
+			path = Safari;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -964,6 +1075,15 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
+				de,
+				"es-ES",
+				es,
+				fr,
+				ja,
+				pt,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 38DE586A1AA174E5005D3B95;
 			productRefGroup = 38DE58741AA174E5005D3B95 /* Products */;
@@ -983,6 +1103,7 @@
 			files = (
 				38DE5DB91AA19611005D3B95 /* CIV.geojson in Resources */,
 				38DE5DEB1AA19611005D3B95 /* GUM.geojson in Resources */,
+				DD761FDC1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
 				38DE5E1D1AA19611005D3B95 /* MKD.geojson in Resources */,
 				38DE5E731AA19611005D3B95 /* UGA.geojson in Resources */,
 				38DE5DDA1AA19611005D3B95 /* FSM.geojson in Resources */,
@@ -1006,6 +1127,7 @@
 				38DE5DC11AA19611005D3B95 /* CRI.geojson in Resources */,
 				38DE5DB21AA19611005D3B95 /* BWA.geojson in Resources */,
 				38DE5DA71AA19611005D3B95 /* BIH.geojson in Resources */,
+				DD761FDE1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				38DE5D951AA19611005D3B95 /* ARG.geojson in Resources */,
 				38DE5E4D1AA19611005D3B95 /* SDN.geojson in Resources */,
 				38DE5E1E1AA19611005D3B95 /* MLI.geojson in Resources */,
@@ -1070,12 +1192,15 @@
 				38DE5E141AA19611005D3B95 /* MAC.geojson in Resources */,
 				38DE5D8E1AA19611005D3B95 /* AFG.geojson in Resources */,
 				38DE5DD41AA19611005D3B95 /* ETH.geojson in Resources */,
+				DD761FDB1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
 				38DE5E651AA19611005D3B95 /* TCD.geojson in Resources */,
 				38DE5D9E1AA19611005D3B95 /* BDI.geojson in Resources */,
 				38DE5E0B1AA19611005D3B95 /* LBR.geojson in Resources */,
 				38DE5E3B1AA19611005D3B95 /* PCN.geojson in Resources */,
+				DD761FD81AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				38DE5E341AA19611005D3B95 /* NOR.geojson in Resources */,
 				38DE5DA61AA19611005D3B95 /* BHS.geojson in Resources */,
+				DD761FD31AA1B2C900BD5053 /* SVWebViewController.strings in Resources */,
 				38DE5E181AA19611005D3B95 /* MDA.geojson in Resources */,
 				38DE5E4F1AA19611005D3B95 /* SGP.geojson in Resources */,
 				38DE5D931AA19611005D3B95 /* AND.geojson in Resources */,
@@ -1106,6 +1231,7 @@
 				38DE5E7A1AA19611005D3B95 /* VCT.geojson in Resources */,
 				38DE5E0A1AA19611005D3B95 /* LBN.geojson in Resources */,
 				38DE5DEF1AA19611005D3B95 /* HND.geojson in Resources */,
+				DD761FE01AA1B2C900BD5053 /* SVWebViewController.podspec in Resources */,
 				38DE5E441AA19611005D3B95 /* PRY.geojson in Resources */,
 				38DE5DC71AA19611005D3B95 /* CZE.geojson in Resources */,
 				38DE5E491AA19611005D3B95 /* ROU.geojson in Resources */,
@@ -1141,6 +1267,7 @@
 				38DE5E681AA19611005D3B95 /* TJK.geojson in Resources */,
 				38DE5D901AA19611005D3B95 /* AIA.geojson in Resources */,
 				38DE5D9B1AA19611005D3B95 /* AUS.geojson in Resources */,
+				DD761FDA1AA1B2C900BD5053 /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				38DE5D9A1AA19611005D3B95 /* ATG.geojson in Resources */,
 				38DE5E351AA19611005D3B95 /* NPL.geojson in Resources */,
 				38DE5DC01AA19611005D3B95 /* CPV.geojson in Resources */,
@@ -1158,6 +1285,7 @@
 				38DE5E7E1AA19611005D3B95 /* VNM.geojson in Resources */,
 				38DE5E671AA19611005D3B95 /* THA.geojson in Resources */,
 				38DE5E6A1AA19611005D3B95 /* TKM.geojson in Resources */,
+				DD761FD11AA1B2C900BD5053 /* LICENSE.txt in Resources */,
 				38DE5E051AA19611005D3B95 /* KIR.geojson in Resources */,
 				38DE5E131AA19611005D3B95 /* LVA.geojson in Resources */,
 				38DE5DB61AA19611005D3B95 /* CHE.geojson in Resources */,
@@ -1174,6 +1302,7 @@
 				38DE5E2A1AA19611005D3B95 /* MYS.geojson in Resources */,
 				38DE588A1AA174E5005D3B95 /* LaunchScreen.xib in Resources */,
 				38DE5DC21AA19611005D3B95 /* CUB.geojson in Resources */,
+				DD761FD71AA1B2C900BD5053 /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
 				38DE5E561AA19611005D3B95 /* SMR.geojson in Resources */,
 				38DE5D921AA19611005D3B95 /* ALB.geojson in Resources */,
 				38DE5DD51AA19611005D3B95 /* FIN.geojson in Resources */,
@@ -1192,6 +1321,7 @@
 				38DE5D9D1AA19611005D3B95 /* AZE.geojson in Resources */,
 				38DE5E501AA19611005D3B95 /* SGS.geojson in Resources */,
 				38DE5E261AA19611005D3B95 /* MSR.geojson in Resources */,
+				DD761FD51AA1B2C900BD5053 /* SVWebViewController.bundle in Resources */,
 				38DE5DC41AA19611005D3B95 /* CXR.geojson in Resources */,
 				38DE5DCF1AA19611005D3B95 /* EGY.geojson in Resources */,
 				38DE5E451AA19611005D3B95 /* PSE.geojson in Resources */,
@@ -1216,6 +1346,7 @@
 				38DE5E751AA19611005D3B95 /* UMI.geojson in Resources */,
 				38DE5DF71AA19611005D3B95 /* IRL.geojson in Resources */,
 				38DE5E461AA19611005D3B95 /* PYF.geojson in Resources */,
+				DD761FC81AA1B2C900BD5053 /* .gitignore in Resources */,
 				38DE5DDE1AA19611005D3B95 /* GGY.geojson in Resources */,
 				38DE5E241AA19611005D3B95 /* MOZ.geojson in Resources */,
 				38DE5E271AA19611005D3B95 /* MTQ.geojson in Resources */,
@@ -1250,10 +1381,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD761FD41AA1B2C900BD5053 /* SVModalWebViewController.m in Sources */,
 				38DE587C1AA174E5005D3B95 /* AppDelegate.m in Sources */,
 				38DE58791AA174E5005D3B95 /* main.m in Sources */,
 				38DE58821AA174E5005D3B95 /* ViewController.m in Sources */,
 				38DE587F1AA174E5005D3B95 /* Orbis.xcdatamodeld in Sources */,
+				DD761FD61AA1B2C900BD5053 /* SVWebViewController.m in Sources */,
+				DD761FDF1AA1B2C900BD5053 /* SVWebViewControllerActivity.m in Sources */,
+				DD761FD91AA1B2C900BD5053 /* SVWebViewControllerActivityChrome.m in Sources */,
+				DD761FD21AA1B2C900BD5053 /* README.md in Sources */,
+				DD761FDD1AA1B2C900BD5053 /* SVWebViewControllerActivitySafari.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1290,6 +1427,23 @@
 				38DE58891AA174E5005D3B95 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		DD761FA81AA1B2C900BD5053 /* SVWebViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD761FA91AA1B2C900BD5053 /* da */,
+				DD761FAA1AA1B2C900BD5053 /* de */,
+				DD761FAB1AA1B2C900BD5053 /* en */,
+				DD761FAC1AA1B2C900BD5053 /* es-ES */,
+				DD761FAD1AA1B2C900BD5053 /* es */,
+				DD761FAE1AA1B2C900BD5053 /* fr */,
+				DD761FAF1AA1B2C900BD5053 /* ja */,
+				DD761FB01AA1B2C900BD5053 /* pt */,
+				DD761FC51AA1B2C900BD5053 /* zh-Hans */,
+				DD761FC61AA1B2C900BD5053 /* zh-Hant */,
+			);
+			name = SVWebViewController.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
