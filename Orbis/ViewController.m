@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "WhirlyGlobeComponent.h"
-//#import "SVWebViewController.h"
+#import "SVWebViewController.h"
 
 @interface ViewController ()
 
@@ -208,7 +208,9 @@ const bool DoGlobe = true;
             if ([country isEqualToString:self.lastSelect]){
                 NSLog(@"%@",country);
                 NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
-                NSString *newURL = [baseURL stringByAppendingString:country];
+                NSArray *array = [country componentsSeparatedByString:@" "];
+                NSString *combined = [array componentsJoinedByString:@"%20"];
+                NSString *newURL = [baseURL stringByAppendingString:combined];
                 NSLog(@"%@",newURL);
                 NSURL * url = [[NSURL alloc] initWithString:newURL];
                 NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
@@ -226,9 +228,6 @@ const bool DoGlobe = true;
                                    options:0
                                    error:&error];
                 NSLog(@"%@", object);
-                //                for (int i=0; i < [object count]; i++) {
-                //                    NSLog(@"Item %.2i - Title  - %@", i+1, [object[i] objectForKey:@"title"] );
-                //                }
             }
             self.lastSelect = (NSString *)theVector.userObject;
         }
