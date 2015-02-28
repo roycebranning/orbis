@@ -176,7 +176,6 @@ const bool DoGlobe = true;
         if ([theVector centroid:&location])
         {
             NSString *country = (NSString *)theVector.userObject;
-            [self addAnnotation:country withSubtitle:nil at:location];
             if ([country isEqualToString:self.lastSelect]){
                 NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
                 NSArray *array = [country componentsSeparatedByString:@" "];
@@ -196,11 +195,8 @@ const bool DoGlobe = true;
                 }
                 
                 else{
-                    NSString *title = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
-                    NSLog(@"Title: %@", title );
-                    
-                    NSString *link = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"canonical_url"];
-                    NSLog(@"URL: %@", link );
+                    self.topTitle = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
+                    [self addAnnotation:country withSubtitle:self.topTitle at:location];
                 }
             }
             self.lastSelect = (NSString *)theVector.userObject;
