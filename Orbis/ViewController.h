@@ -10,7 +10,7 @@
 #import <WhirlyGlobeComponent.h>
 
 @interface ViewController : UIViewController <WhirlyGlobeViewControllerDelegate,MaplyViewControllerDelegate>
-
+@property (strong, nonatomic) NSString *lastSelect;
 
 @end
 

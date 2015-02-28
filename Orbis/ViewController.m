@@ -142,7 +142,7 @@ const bool DoGlobe = true;
                                wgVecObj.userObject = vecName;
                                
                                // add the outline to our view
-                               MaplyComponentObject *compObj = [theViewC addVectors:[NSArray arrayWithObject:wgVecObj] desc:vectorDict];
+                               [theViewC addVectors:[NSArray arrayWithObject:wgVecObj] desc:vectorDict];
                                // If you ever intend to remove these, keep track of the MaplyComponentObjects above.
                            }
                        }
@@ -189,9 +189,12 @@ const bool DoGlobe = true;
         
         if ([theVector centroid:&location])
         {
-            NSString *title = @"Selected:";
-            NSString *subtitle = (NSString *)theVector.userObject;
-            [self addAnnotation:title withSubtitle:subtitle at:location];
+            NSString *country = (NSString *)theVector.userObject;
+            [self addAnnotation:country withSubtitle:nil at:location];
+            if ([country isEqualToString:self.lastSelect]){
+                NSLog(@"%@",country);
+            }
+            self.lastSelect = (NSString *)theVector.userObject;
         }
     }
 }
