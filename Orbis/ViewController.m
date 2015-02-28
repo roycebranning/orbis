@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "WhirlyGlobeComponent.h"
-#import "SVWebViewController.h"
+//#import "SVWebViewController.h"
 
 @interface ViewController ()
 
@@ -192,6 +192,9 @@ const bool DoGlobe = true;
 - (void) handleSelection:(MaplyBaseViewController *)viewC
                 selected:(NSObject *)selectedObj
 {
+    //SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+   // NSString *subtitle = [NSString stringWithFormat: @"%@",webViewController.url];
+    
     // ensure it's a MaplyVectorObject. It should be one of our outlines.
     if ([selectedObj isKindOfClass:[MaplyVectorObject class]])
     {
