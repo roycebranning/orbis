@@ -41,14 +41,37 @@
     // and thirty fps if we can get it ­ change this to 3 if you find your app is struggling
     theViewC.frameInterval = 2;
     
-    // set up the data source
-    MaplyMBTileSource *tileSource =
-    [[MaplyMBTileSource alloc] initWithMBTiles:@"geography-class_medres"];
+    // add the capability to use the local tiles or remote tiles
+    bool useLocalTiles = false;
     
-    // set up the layer
-    MaplyQuadImageTilesLayer *layer =
-    [[MaplyQuadImageTilesLayer alloc] initWithCoordSystem:tileSource.coordSys
-                                               tileSource:tileSource];
+    // we'll need this layer in a second
+    MaplyQuadImageTilesLayer *layer;
+    
+    if (useLocalTiles)
+    {
+        MaplyMBTileSource *tileSource =
+        [[MaplyMBTileSource alloc] initWithMBTiles:@"geography­-class_medres"];
+        layer = [[MaplyQuadImageTilesLayer alloc]
+                 initWithCoordSystem:tileSource.coordSys tileSource:tileSource];
+    } else {
+        // Because this is a remote tile set, we'll want a cache directory
+        NSString *baseCacheDir =
+        [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)
+         objectAtIndex:0];
+        NSString *aerialTilesCacheDir = [NSString stringWithFormat:@"%@/osmtiles/",
+                                         baseCacheDir];
+        int maxZoom = 18;
+        
+        // MapQuest Open Aerial Tiles, Courtesy Of Mapquest
+        // Portions Courtesy NASA/JPL­Caltech and U.S. Depart. of Agriculture, Farm Service Agency
+        MaplyRemoteTileSource *tileSource =
+        [[MaplyRemoteTileSource alloc]
+         initWithBaseURL:@"http://otile1.mqcdn.com/tiles/1.0.0/sat/"
+         ext:@"png" minZoom:0 maxZoom:maxZoom];
+        tileSource.cacheDir = aerialTilesCacheDir;
+        layer = [[MaplyQuadImageTilesLayer alloc]
+                 initWithCoordSystem:tileSource.coordSys tileSource:tileSource];
+    }
     layer.handleEdges = (globeViewC != nil);
     layer.coverPoles = (globeViewC != nil);
     layer.requireElev = false;

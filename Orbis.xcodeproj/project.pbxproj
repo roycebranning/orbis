@@ -21,7 +21,6 @@
 		38DE58A61AA175E9005D3B95 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DE58A51AA175E9005D3B95 /* libz.dylib */; };
 		38DE58A81AA175F6005D3B95 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DE58A71AA175F6005D3B95 /* libxml2.dylib */; };
 		38DE58AA1AA17603005D3B95 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DE58A91AA17603005D3B95 /* libsqlite3.dylib */; };
-		38DE58AC1AA17792005D3B95 /* geography-class_medres.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 38DE58AB1AA17792005D3B95 /* geography-class_medres.mbtiles */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		38DE58A51AA175E9005D3B95 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		38DE58A71AA175F6005D3B95 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		38DE58A91AA17603005D3B95 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		38DE58AB1AA17792005D3B95 /* geography-class_medres.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = "geography-class_medres.mbtiles"; path = "Orbis/WhirlyGlobe_Maply_Distribution_2_3/resources/base_maps/geography-class_medres.mbtiles"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,6 @@
 		38DE586A1AA174E5005D3B95 = {
 			isa = PBXGroup;
 			children = (
-				38DE58AB1AA17792005D3B95 /* geography-class_medres.mbtiles */,
 				38DE58A91AA17603005D3B95 /* libsqlite3.dylib */,
 				38DE58A71AA175F6005D3B95 /* libxml2.dylib */,
 				38DE58A51AA175E9005D3B95 /* libz.dylib */,
@@ -229,7 +226,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38DE58AC1AA17792005D3B95 /* geography-class_medres.mbtiles in Resources */,
 				38DE58851AA174E5005D3B95 /* Main.storyboard in Resources */,
 				38DE588A1AA174E5005D3B95 /* LaunchScreen.xib in Resources */,
 				38DE58871AA174E5005D3B95 /* Images.xcassets in Resources */,
