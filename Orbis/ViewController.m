@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "WhirlyGlobeComponent.h"
-#import "SVWebViewController.h"
+
 
 @interface ViewController ()
 
@@ -203,29 +203,29 @@ const bool DoGlobe = true;
             NSString *country = (NSString *)theVector.userObject;
             [self addAnnotation:country withSubtitle:nil at:location];
             if ([country isEqualToString:self.lastSelect]){
-                NSLog(@"%@",country);
+               // NSLog(@"%@",country);
                 NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
                 NSString *newURL = [baseURL stringByAppendingString:country];
-                NSLog(@"%@",newURL);
-                NSURL * url = [[NSURL alloc] initWithString:newURL];
-                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
-                                                            cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                                        timeoutInterval:30];
-                NSData *urlData;
-                NSURLResponse *response;
+                //NSLog(@"%@",newURL);
+                NSData *allNewsInfo = [[NSData alloc] initWithContentsOfURL:
+                                          [NSURL URLWithString:newURL]];
                 NSError *error;
+                NSMutableDictionary *allNews = [NSJSONSerialization
+                                                   JSONObjectWithData:allNewsInfo
+                                                   options:NSJSONReadingMutableContainers
+                                                   error:&error];
+                if( error )
+                {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
+                else {
+                    NSString *title = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
+                    NSLog(@"Title: %@", title );
+                    
+                    NSString *link = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"canonical_url"];
+                    NSLog(@"URL: %@", link );
+                }
                 
-                urlData = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                returningResponse:&response
-                                                            error:&error];
-                NSArray* object = [NSJSONSerialization
-                                   JSONObjectWithData:urlData
-                                   options:0
-                                   error:&error];
-                NSLog(@"%@", object);
-                //                for (int i=0; i < [object count]; i++) {
-                //                    NSLog(@"Item %.2i - Title  - %@", i+1, [object[i] objectForKey:@"title"] );
-                //                }
             }
             self.lastSelect = (NSString *)theVector.userObject;
         }
