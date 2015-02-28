@@ -178,7 +178,7 @@ const bool DoGlobe = true;
             NSString *country = (NSString *)theVector.userObject;
             [self addAnnotation:country withSubtitle:nil at:location];
             if ([country isEqualToString:self.lastSelect]){
-                NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
+                NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=10&q=";
                 NSArray *array = [country componentsSeparatedByString:@" "];
                 NSString *combined = [array componentsJoinedByString:@"%20"];
                 NSString *newURL = [baseURL stringByAppendingString:combined];
@@ -196,11 +196,27 @@ const bool DoGlobe = true;
                 }
                 
                 else{
-                    NSString *title = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
-                    NSLog(@"Title: %@", title );
+                    NSDictionary* anArticle;
+                    NSMutableArray* listOfArticles = [NSMutableArray arrayWithCapacity: 10];
+                    for(int i = 0; i < 10; i++){
+                        
+                        anArticle = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
+                                   [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
+                                   nil];
+                        [listOfArticles addObject: anArticle];
+                        NSLog(@"%@",listOfArticles[i][@"title"]);
+                        NSLog(@"%@",listOfArticles[i][@"link"]);
+                    }
+                    // To access artile title: listOfArticles[article number][@"title"]
+                    // To access artile link: listOfArticles[article number][@"link"]
                     
-                    NSString *link = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"canonical_url"];
-                    NSLog(@"URL: %@", link );
+                    
+//                    NSString *title = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
+//                    NSLog(@"Title: %@", title );
+//                    
+//                    NSString *link = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"canonical_url"];
+//                    NSLog(@"URL: %@", link );
                 }
             }
             self.lastSelect = (NSString *)theVector.userObject;
