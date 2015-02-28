@@ -176,28 +176,33 @@ const bool DoGlobe = true;
         if ([theVector centroid:&location])
         {
             NSString *country = (NSString *)theVector.userObject;
+            NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
+            NSArray *array = [country componentsSeparatedByString:@" "];
+            NSString *combined = [array componentsJoinedByString:@"%20"];
+            NSString *newURL = [baseURL stringByAppendingString:combined];
+            NSData *allNewsInfo = [[NSData alloc] initWithContentsOfURL:
+                                   [NSURL URLWithString:newURL]];
+            NSError *error;
+            NSMutableDictionary *allNews = [NSJSONSerialization
+                                            JSONObjectWithData:allNewsInfo
+                                            options:NSJSONReadingMutableContainers
+                                            error:&error];
+            if(error)
+            {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            
+            else{
+                if ([allNews objectForKey:@"result"] != nil){
+                    NSString *topTitle = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
+                    [self addAnnotation:country withSubtitle:topTitle at:location];
+                } else {
+                    [self addAnnotation:country withSubtitle:nil at:location];
+                }
+            }
             if ([country isEqualToString:self.lastSelect]){
-                NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
-                NSArray *array = [country componentsSeparatedByString:@" "];
-                NSString *combined = [array componentsJoinedByString:@"%20"];
-                NSString *newURL = [baseURL stringByAppendingString:combined];
-                NSData *allNewsInfo = [[NSData alloc] initWithContentsOfURL:
-                                       [NSURL URLWithString:newURL]];
-                NSError *error;
-                NSMutableDictionary *allNews = [NSJSONSerialization
-                                                JSONObjectWithData:allNewsInfo
-                                                options:NSJSONReadingMutableContainers
-                                                error:&error];
-                
-                if(error)
-                {
-                    NSLog(@"%@", [error localizedDescription]);
-                }
-                
-                else{
-                    self.topTitle = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
-                    [self addAnnotation:country withSubtitle:self.topTitle at:location];
-                }
+                UITableView *tableView = [[UITableView alloc]init];
+                self.view = tableView;
             }
             self.lastSelect = (NSString *)theVector.userObject;
         }
@@ -217,6 +222,13 @@ const bool DoGlobe = true;
 {
     [self handleSelection:viewC selected:selectedObj];
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSLog(@"click");
+}
+
 
 @end
 

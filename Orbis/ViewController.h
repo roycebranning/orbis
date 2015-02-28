@@ -11,7 +11,6 @@
 
 @interface ViewController : UIViewController <WhirlyGlobeViewControllerDelegate,MaplyViewControllerDelegate>
 @property (strong, nonatomic) NSString *lastSelect;
-@property (strong, nonatomic) NSString *topTitle;
 
 @end
 
