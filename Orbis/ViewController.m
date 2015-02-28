@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WhirlyGlobeComponent.h"
+#import "SVModalWebViewController.h"
 
 
 @interface ViewController () <UITableViewDelegate>
@@ -235,6 +236,9 @@ const bool DoGlobe = true;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%@", indexPath);
+    NSString* articleURL = self.listOfArticles[indexPath.row][@"link"];
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:articleURL];
+    [self presentViewController:webViewController animated:YES completion:NULL];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
