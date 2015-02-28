@@ -177,7 +177,7 @@ const bool DoGlobe = true;
         if ([theVector centroid:&location])
         {
             NSString *country = (NSString *)theVector.userObject;
-            NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=10&q=";
+            NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=20&q=";
             NSArray *array = [country componentsSeparatedByString:@" "];
             NSString *combined = [array componentsJoinedByString:@"%20"];
             NSString *newURL = [baseURL stringByAppendingString:combined];
@@ -188,7 +188,8 @@ const bool DoGlobe = true;
                                             JSONObjectWithData:allNewsInfo
                                             options:NSJSONReadingMutableContainers
                                             error:&error];
-            
+            //NSLog(@"%d", ((NSArray *)allNews[@"result"]).count);
+            if(([allNews[@"total_count"] integerValue]) != 0){
             if(error)
             {
                 NSLog(@"%@", [error localizedDescription]);
@@ -197,15 +198,15 @@ const bool DoGlobe = true;
             else{
                 NSDictionary* anArticle;
                 self.listOfArticles = [[NSMutableArray alloc] init];
-                for(int i = 0; i < sizeof(self.listOfArticles); i++){
+                for(int i = 0; i < ((NSArray *)allNews[@"result"]).count; i++){
                     
                     anArticle = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
                                  [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
                                  nil];
                     [self.listOfArticles addObject: anArticle];
-                    NSLog(@"%@",self.listOfArticles[i][@"title"]);
-                    NSLog(@"%@",self.listOfArticles[i][@"link"]);
+                   //NSLog(@"%@",self.listOfArticles[i][@"title"]);
+                    // NSLog(@"%@",self.listOfArticles[i][@"link"]);
                 }
             }
             [self addAnnotation:country withSubtitle:[[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"] at:location];
@@ -216,6 +217,9 @@ const bool DoGlobe = true;
                 [self.view addSubview:articleView];
             }
             self.lastSelect = (NSString *)theVector.userObject;
+            }else{
+                [self addAnnotation:country withSubtitle:@"No news available" at:location];
+            }
         }
     }
 }
@@ -235,7 +239,7 @@ const bool DoGlobe = true;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%@", indexPath);
+    //NSLog(@"%@", indexPath);
     NSString* articleURL = self.listOfArticles[indexPath.row][@"link"];
     SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:articleURL];
     [self presentViewController:webViewController animated:YES completion:NULL];
