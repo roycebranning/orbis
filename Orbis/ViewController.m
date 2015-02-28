@@ -165,7 +165,7 @@ const bool DoGlobe = true;
                 selected:(NSObject *)selectedObj
 {
     //SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
-   // NSString *subtitle = [NSString stringWithFormat: @"%@",webViewController.url];
+    // NSString *subtitle = [NSString stringWithFormat: @"%@",webViewController.url];
     
     // ensure it's a MaplyVectorObject. It should be one of our outlines.
     if ([selectedObj isKindOfClass:[MaplyVectorObject class]])
@@ -176,7 +176,7 @@ const bool DoGlobe = true;
         if ([theVector centroid:&location])
         {
             NSString *country = (NSString *)theVector.userObject;
-            NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=1&q=";
+            NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=10&q=";
             NSArray *array = [country componentsSeparatedByString:@" "];
             NSString *combined = [array componentsJoinedByString:@"%20"];
             NSString *newURL = [baseURL stringByAppendingString:combined];
@@ -187,22 +187,30 @@ const bool DoGlobe = true;
                                             JSONObjectWithData:allNewsInfo
                                             options:NSJSONReadingMutableContainers
                                             error:&error];
+            
             if(error)
             {
                 NSLog(@"%@", [error localizedDescription]);
             }
             
             else{
-                if ([allNews objectForKey:@"result"] != nil){
-                    NSString *topTitle = [[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"];
-                    [self addAnnotation:country withSubtitle:topTitle at:location];
-                } else {
-                    [self addAnnotation:country withSubtitle:nil at:location];
+                NSDictionary* anArticle;
+                NSMutableArray* listOfArticles = [[NSMutableArray alloc] init];
+                for(int i = 0; i < sizeof(listOfArticles); i++){
+                    
+                    anArticle = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
+                                 [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
+                                 nil];
+                    [listOfArticles addObject: anArticle];
+                    NSLog(@"%@",listOfArticles[i][@"title"]);
+                    NSLog(@"%@",listOfArticles[i][@"link"]);
                 }
             }
+            [self addAnnotation:country withSubtitle:[[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"] at:location];
             if ([country isEqualToString:self.lastSelect]){
-                UITableView *tableView = [[UITableView alloc]init];
-                self.view = tableView;
+                UITableView *articleView = [[UITableView alloc]init];
+                self.view = articleView;
             }
             self.lastSelect = (NSString *)theVector.userObject;
         }
