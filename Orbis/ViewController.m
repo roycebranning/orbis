@@ -11,11 +11,14 @@
 
 @interface ViewController ()
 
+- (void) addCountries;
+
 @end
 
 @implementation ViewController
 {
     WhirlyGlobeViewController *theViewC;
+    NSDictionary *vectorDict;
 }
 
 - (void)viewDidLoad {
@@ -91,7 +94,51 @@
         [mapViewC animateToPosition:MaplyCoordinateMakeWithDegrees(-122.4192,37.7793)
                                time:1.0];
     }
+    NSMutableArray *array = [NSMutableArray array];
+    UIImage *pointer = [UIImage imageNamed:@"orbisPointer"];
+    MaplyCoordinate test = MaplyCoordinateMakeWithDegrees(-77.036667, 38.895111);
+    MaplyScreenMarker *marker = [[MaplyScreenMarker alloc] init];
+    marker.image = pointer;
+    marker.loc = test;
+    marker.size = CGSizeMake(40, 40);
+    [array addObject:marker];
+    [theViewC addScreenMarkers:array desc:nil];
+    // set the vector characteristics to be pretty and selectable
+    vectorDict = @{
+                   kMaplyColor: [UIColor whiteColor],
+                   kMaplySelectable: @(true),
+                   kMaplyVecWidth: @(4.0)};
+    
+    // add the countries
+    [self addCountries];
+    
 }
+- (void)addCountries
+{
+    // handle this in another thread
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0),
+                   ^{
+                       NSArray *allOutlines = [[NSBundle mainBundle] pathsForResourcesOfType:@"geojson" inDirectory:nil];
+                       
+                       for (NSString *outlineFile in allOutlines)
+                       {
+                           NSData *jsonData = [NSData dataWithContentsOfFile:outlineFile];
+                           if (jsonData)
+                           {
+                               MaplyVectorObject *wgVecObj = [MaplyVectorObject VectorObjectFromGeoJSON:jsonData];
+                               
+                               // the admin tag from the country outline geojson has the country name ­ save
+                               NSString *vecName = [[wgVecObj attributes] objectForKey:@"ADMIN"];
+                               wgVecObj.userObject = vecName;
+                               
+                               // add the outline to our view
+                               MaplyComponentObject *compObj = [theViewC addVectors:[NSArray arrayWithObject:wgVecObj] desc:vectorDict];
+                               // If you ever intend to remove these, keep track of the MaplyComponentObjects above.
+                           }
+                       }
+                   });
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
