@@ -211,10 +211,10 @@ const bool DoGlobe = true;
             }
             [self addAnnotation:country withSubtitle:[[[allNews objectForKey:@"result"] objectAtIndex:0] objectForKey:@"title"] at:location];
             if ([country isEqualToString:self.lastSelect]){
-                UITableView *articleView    =   [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-                articleView.dataSource      =   self;
-                articleView.delegate        =   self;
-                [self.view addSubview:articleView];
+                _articleView    =   [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+                _articleView.dataSource      =   self;
+                _articleView.delegate        =   self;
+                [self.view addSubview:_articleView];
             }
             self.lastSelect = (NSString *)theVector.userObject;
             }else{
@@ -243,6 +243,7 @@ const bool DoGlobe = true;
     NSString* articleURL = self.listOfArticles[indexPath.row][@"link"];
     SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:articleURL];
     [self presentViewController:webViewController animated:YES completion:NULL];
+    [_articleView removeFromSuperview];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
