@@ -177,12 +177,20 @@ const bool DoGlobe = true;
         if ([theVector centroid:&location])
         {
             NSString *country = (NSString *)theVector.userObject;
-            [self addAnnotation:country withSubtitle:nil at:location];
+            [self addAnnotation:country withSubtitle:@"Tap to View News" at:location];
             if ([country isEqualToString:self.lastSelect]){
                 NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=20&q=";
                 NSArray *array = [country componentsSeparatedByString:@" "];
-                NSString *combined = [array componentsJoinedByString:@"%20"];
-                NSString *newURL = [baseURL stringByAppendingString:combined];
+                NSString *skimArray = [[NSString alloc]init];
+                for (id part in array){
+                    if (![part isEqualToString:@"of"] && ![part isEqualToString:@"the"] && ![part isEqualToString:@"South"] &&![part isEqualToString:@"North"] && ![part isEqualToString:@"New"]){
+                    skimArray = [skimArray stringByAppendingString:@"%20"];
+                    skimArray = [skimArray stringByAppendingString:part];
+                    }
+                }
+                NSString *safeString = [[NSString alloc] initWithFormat:@"%@", skimArray];
+                NSString *newURL = [baseURL stringByAppendingString:safeString];
+                NSLog(@"%@", newURL);
                 NSData *allNewsInfo = [[NSData alloc] initWithContentsOfURL:
                                        [NSURL URLWithString:newURL]];
                 NSError *error;
