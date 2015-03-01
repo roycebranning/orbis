@@ -179,7 +179,7 @@ const bool DoGlobe = true;
             NSString *country = (NSString *)theVector.userObject;
             [self addAnnotation:country withSubtitle:@"Tap to View News" at:location];
             if ([country isEqualToString:self.lastSelect]){
-                NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=20&q=";
+                NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=12&q=";
                 NSArray *array = [country componentsSeparatedByString:@" "];
                 NSString *skimArray = [[NSString alloc]init];
                 for (id part in array){
@@ -216,7 +216,10 @@ const bool DoGlobe = true;
                                          [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
                                          [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
                                          nil];
+                            NSString *BuzzFeedSucks = @"Buzzfeed.com";
+                            if (![BuzzFeedSucks isEqualToString:[[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"feed_provider_domain"]]){
                             [self.listOfArticles addObject: anArticle];
+                            }
                         }
                     }
 
