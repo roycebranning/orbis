@@ -101,8 +101,8 @@ const bool DoGlobe = true;
     // start up over San Francisco
     if (globeViewC != nil)
     {
-        globeViewC.height = 0.8;
-        [globeViewC animateToPosition:MaplyCoordinateMakeWithDegrees(-122.4192,37.7793)
+        globeViewC.height = 1.1;
+        [globeViewC animateToPosition:MaplyCoordinateMakeWithDegrees(-90.1978,38.6272)
                                  time:1.0];
     } else {
         mapViewC.height = 1.0;
