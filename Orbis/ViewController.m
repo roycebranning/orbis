@@ -177,7 +177,7 @@ const bool DoGlobe = true;
         if ([theVector centroid:&location])
         {
             NSString *country = (NSString *)theVector.userObject;
-            [self addAnnotation:country withSubtitle:@"Tap to View News" at:location];
+            [self addAnnotation:country withSubtitle:@"Tap Country Again to View News" at:location];
             if ([country isEqualToString:self.lastSelect]){
                 NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=12&q=";
                 NSArray *array = [country componentsSeparatedByString:@" "];
@@ -216,17 +216,28 @@ const bool DoGlobe = true;
                                          [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
                                          [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
                                          nil];
-                            NSString *BuzzFeedSucks = @"Buzzfeed.com";
-                            if (![BuzzFeedSucks isEqualToString:[[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"feed_provider_domain"]]){
-                            [self.listOfArticles addObject: anArticle];
+                            BOOL doAdd = false;
+                            NSArray *countryCompare= [[NSArray alloc]init];
+                            countryCompare = [[[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"] componentsSeparatedByString:@" "];
+                            for (id word in countryCompare){
+                                if ([array containsObject:word]){
+                                    doAdd = true;
+                                }
+                            }
+                            if(doAdd){
+                                [self.listOfArticles addObject: anArticle];
                             }
                         }
                     }
-
                 _articleView    =   [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
                 _articleView.dataSource      =   self;
                 _articleView.delegate        =   self;
-                [self.view addSubview:_articleView];
+                    if ([self.listOfArticles count] > 0) {
+                        [self.view addSubview:_articleView];
+                    }else{
+                        [self addAnnotation:country withSubtitle:@"No News Available" at:location];
+                    }
+                
                 }
             }
             self.lastSelect = (NSString *)theVector.userObject;
