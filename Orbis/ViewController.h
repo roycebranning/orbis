@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSString *lastSelect;
 @property (strong, nonatomic) NSMutableArray *listOfArticles;
 @property (strong, nonatomic) UITableView *articleView;
+@property (nonatomic) BOOL doAdd;
 
 
 @end

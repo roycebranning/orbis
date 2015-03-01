@@ -190,7 +190,6 @@ const bool DoGlobe = true;
                 }
                 NSString *safeString = [[NSString alloc] initWithFormat:@"%@", skimArray];
                 NSString *newURL = [baseURL stringByAppendingString:safeString];
-                NSLog(@"%@", newURL);
                 NSData *allNewsInfo = [[NSData alloc] initWithContentsOfURL:
                                        [NSURL URLWithString:newURL]];
                 NSError *error;
@@ -216,15 +215,19 @@ const bool DoGlobe = true;
                                          [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"], @"title",
                                          [[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"canonical_url"], @"link",
                                          nil];
-                            BOOL doAdd = false;
+                            if ([array[0]  isEqual: @"United"]){
+                                _doAdd = true;
+                            }else{
+                                _doAdd = false;
+                            }
                             NSArray *countryCompare= [[NSArray alloc]init];
                             countryCompare = [[[[allNews objectForKey:@"result"] objectAtIndex:i] objectForKey:@"title"] componentsSeparatedByString:@" "];
                             for (id word in countryCompare){
                                 if ([array containsObject:word]){
-                                    doAdd = true;
+                                    _doAdd = true;
                                 }
                             }
-                            if(doAdd){
+                            if(_doAdd){
                                 [self.listOfArticles addObject: anArticle];
                             }
                         }
@@ -260,7 +263,6 @@ const bool DoGlobe = true;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //NSLog(@"%@", indexPath);
     NSString* articleURL = self.listOfArticles[indexPath.row][@"link"];
     SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:articleURL];
     [self presentViewController:webViewController animated:YES completion:NULL];
