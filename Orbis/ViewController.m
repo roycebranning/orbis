@@ -26,7 +26,8 @@
     NSDictionary *vectorDict;
 }
 
-// Set this to false for a map
+// Setting up the Globe view
+
 const bool DoGlobe = true;
 
 - (void)viewDidLoad {
@@ -44,25 +45,18 @@ const bool DoGlobe = true;
     if (globeViewC != nil)
         globeViewC.delegate = self;
     
-    // If you're doing a map
-    if (mapViewC != nil)
-        mapViewC.delegate = self;
     
     // Create an empty globe or map and add it to the view
     [self.view addSubview:theViewC.view];
     theViewC.view.frame = self.view.bounds;
     [self addChildViewController:theViewC];
     
-    // we want a black background for a globe, a white background for a map.
     theViewC.clearColor = (globeViewC != nil) ? [UIColor blackColor] : [UIColor whiteColor];
     
-    // and thirty fps if we can get it ­ change this to 3 if you find your app is struggling
     theViewC.frameInterval = 2;
     
-    // add the capability to use the local tiles or remote tiles
     bool useLocalTiles = false;
     
-    // we'll need this layer in a second
     MaplyQuadImageTilesLayer *layer;
     
     if (useLocalTiles)
@@ -98,7 +92,7 @@ const bool DoGlobe = true;
     layer.singleLevelLoading = false;
     [theViewC addLayer:layer];
     
-    // start up over San Francisco
+    // start up over St.louis
     if (globeViewC != nil)
     {
         globeViewC.height = 1.1;
@@ -176,13 +170,16 @@ const bool DoGlobe = true;
         
         if ([theVector centroid:&location])
         {
+            //Country selected once
             NSString *country = (NSString *)theVector.userObject;
             [self addAnnotation:country withSubtitle:@"Tap Country Again to View News" at:location];
+            //On second tap of country
             if ([country isEqualToString:self.lastSelect]){
                 NSString *baseURL = @"http://gravity.answers.com/endpoint/searches/news?key=ab45bcbb7d58ce62eb0e9084ae78ba9ace55a9e9&limit=12&q=";
                 NSArray *array = [country componentsSeparatedByString:@" "];
                 NSString *skimArray = [[NSString alloc]init];
                 for (id part in array){
+                    //Narrowing the results and formatting the country name
                     if (![part isEqualToString:@"of"] && ![part isEqualToString:@"the"] && ![part isEqualToString:@"South"] &&![part isEqualToString:@"North"] && ![part isEqualToString:@"New"]){
                     skimArray = [skimArray stringByAppendingString:@"%20"];
                     skimArray = [skimArray stringByAppendingString:part];
@@ -190,6 +187,8 @@ const bool DoGlobe = true;
                 }
                 NSString *safeString = [[NSString alloc] initWithFormat:@"%@", skimArray];
                 NSString *newURL = [baseURL stringByAppendingString:safeString];
+                
+                //Getting the News Data
                 NSData *allNewsInfo = [[NSData alloc] initWithContentsOfURL:
                                        [NSURL URLWithString:newURL]];
                 NSError *error;
@@ -232,6 +231,7 @@ const bool DoGlobe = true;
                             }
                         }
                     }
+                //Launching the article list
                 _articleView    =   [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
                 _articleView.dataSource      =   self;
                 _articleView.delegate        =   self;
@@ -255,12 +255,6 @@ const bool DoGlobe = true;
     [self handleSelection:viewC selected:selectedObj];
 }
 
-// This is the version for a map
-- (void) maplyViewController:(MaplyViewController *)viewC
-                   didSelect:(NSObject *)selectedObj
-{
-    [self handleSelection:viewC selected:selectedObj];
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString* articleURL = self.listOfArticles[indexPath.row][@"link"];
